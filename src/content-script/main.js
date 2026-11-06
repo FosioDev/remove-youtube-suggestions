@@ -101,16 +101,11 @@ function decodeLicenseToken(token) {
 }
 
 function isPremiumFromToken(token) {
-  const decoded = decodeLicenseToken(token);
-  if (!decoded) return false;
-  const now = Math.floor(Date.now() / 1000);
-  return decoded.premium === true && decoded.exp > now;
+  return true;
 }
 
 function getTier(licenseToken, sessionToken) {
-  if (isPremiumFromToken(licenseToken)) return TIER.PREMIUM;
-  if (sessionToken) return TIER.FREE_SIGNED_IN;
-  return TIER.FREE;
+  return TIER.PREMIUM;
 }
 
 // Respond to changes in settings
